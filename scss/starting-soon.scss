@@ -1,0 +1,69 @@
+@import "font-smoothing";
+
+:root,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Barlow';
+    background-color: transparent;
+    color: #fff;
+}
+
+
+#container {
+    width: 700px;
+    height: 275px;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+#timer {
+    color: #fff;
+    line-height: 1;
+    font-size: 240px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+#timer .hide {
+    opacity: 0;
+}
+
+.letter {
+    //overflow: hidden;
+    height: 195px;
+    width: 165px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.letter,
+.divider {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 100ms;
+    transition-timing-function: linear;
+}
+
+#divider {
+    margin-top: 20px;
+    width: 40px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: currentColor;
+}

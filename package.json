@@ -1,0 +1,29 @@
+{
+    "name": "obs-dashboard",
+    "version": "0.0.1",
+    "description": "HTML widget for OBS with live update dashboard",
+    "scripts": {
+        "start": "node index.js",
+        "build": "npm-run-all css js",
+        "css-compile": "node-sass --include-path node_modules --source-map true --source-map-contents true --precision 6 scss -o assets/css/",
+        "css": "npm-run-all css-compile",
+        "js-dashboard": "rollup js/dashboard.js --file assets/js/dashboard.js --format cjs",
+        "js-image-manager": "rollup js/image-manager.js --file assets/js/image-manager.js --format es",
+        "js": "npm-run-all js-dashboard js-image-manager",
+        "watch": "nodemon -e html,scss,js --ignore assets/css/ --ignore assets/js/ -x \"npm run build\""
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "randomstring": "^1.2.3",
+        "redis": "^4.5.1",
+        "socket.io": "^4.5.3",
+        "socket.io-client": "^4.5.4",
+        "write": "^2.0.0"
+    },
+    "devDependencies": {
+        "node-sass": "^8.0.0",
+        "nodemon": "^2.0.20",
+        "npm-run-all": "^4.1.5",
+        "rollup": "^3.5.0"
+    }
+}

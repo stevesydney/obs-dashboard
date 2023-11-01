@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="obs-width" content="700">
+    <meta name="obs-height" content="300">
+    <meta name="obs-fps" content="60">
+    <meta name="obs-shutdown" content="true">
+    <meta name="obs-refresh" content="true">
+    
+    <meta name="obs-browser" content="width=700,height=300,fps=60,shutdown=true,refresh=true">
+    <title>Document</title>
+    <link href="assets/css/video-text.css" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <div id="video_text">
+
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        var videoTextContainer = document.getElementById('video_text');
+
+        socket.on('video text', function(videoText) {
+            videoTextContainer.innerHTML = '';
+            if (videoText.hasOwnProperty('h1') && videoText['h1']) {
+                var header1 = document.createElement('h1');
+                header1.textContent = videoText.h1;
+                videoTextContainer.appendChild(header1);
+            }
+            if (videoText.hasOwnProperty('h2') && videoText['h2']) {
+                var header2 = document.createElement('h2');
+                header2.textContent = videoText.h2;
+                videoTextContainer.appendChild(header2);
+            }
+            if (videoText.hasOwnProperty('h3') && videoText['h3']) {
+                var header3 = document.createElement('h3');
+                header3.textContent = videoText.h3;
+                videoTextContainer.appendChild(header3);
+            }
+        });
+    </script>
+</body>
+</html>

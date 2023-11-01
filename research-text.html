@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="obs-width" content="700">
+    <meta name="obs-height" content="300">
+    <meta name="obs-fps" content="60">
+    <meta name="obs-shutdown" content="true">
+    <meta name="obs-refresh" content="true">
+    
+    <meta name="obs-browser" content="width=700,height=300,fps=60,shutdown=true,refresh=true">
+    <title>Document</title>
+    <link href="assets/css/research-text.css" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <div id="research_text">
+
+        </div>
+        <div id="research_image">
+        
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        var researchTextRoot = document.getElementById('container');
+        var researchTextContainer = document.getElementById('research_text');
+        var researchImageContainer = document.getElementById('research_image');
+
+        socket.on('research text', function(researchText) {
+            researchTextRoot.dataset.mode = researchText['mode'];
+            researchTextRoot.dataset.image = researchText.hasOwnProperty('image_src') && researchText['image_src'] ? true : false;
+            researchTextContainer.innerHTML = '';
+            researchImageContainer.innerHTML = '';
+            if (researchText.hasOwnProperty('h1') && researchText['h1']) {
+                var header1 = document.createElement('h1');
+                header1.textContent = researchText.h1;
+                researchTextContainer.appendChild(header1);
+            }
+            if (researchText.hasOwnProperty('h2') && researchText['h2']) {
+                var header2 = document.createElement('h2');
+                header2.textContent = researchText.h2;
+                researchTextContainer.appendChild(header2);
+            }
+            if (researchText.hasOwnProperty('h3') && researchText['h3']) {
+                var header3 = document.createElement('h3');
+                header3.textContent = researchText.h3;
+                researchTextContainer.appendChild(header3);
+            }
+            if (researchText.hasOwnProperty('h4') && researchText['h4']) {
+                var header4 = document.createElement('h4');
+                header4.textContent = researchText.h4;
+                researchTextContainer.appendChild(header4);
+            }
+            if (researchText.hasOwnProperty('h5') && researchText['h5']) {
+                var header5 = document.createElement('h5');
+                header5.textContent = researchText.h5;
+                researchTextContainer.appendChild(header5);
+            }
+            if (researchText.hasOwnProperty('image_src') && researchText['image_src']) {
+                var image = document.createElement('img');
+                image.src = researchText.image_src;
+                researchImageContainer.appendChild(image);
+            }
+        });
+    </script>
+</body>
+</html>

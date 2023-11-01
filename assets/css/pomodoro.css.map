@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "pomodoro.css",
+	"sources": [
+		"../../scss/pomodoro.scss",
+		"../../scss/_font-smoothing.scss"
+	],
+	"sourcesContent": [
+		"@import \"font-smoothing\";\n\n:root,\nbody {\n    margin: 0;\n    padding: 0;\n    overflow: hidden;\n    font-family: 'Redaction';\n    background-color: #000;\n    color: #fff;\n}\n\n\n#container {\n    width: 700px;\n    height: 275px;\n    background-color: transparent;\n    overflow: hidden;\n}\n\n#timer {\n    color: #fff;\n    line-height: 1em;\n    font-size: 200px;\n    font-weight: bold;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    text-align: center;\n    height: 100%;\n}\n\n#timer .hide {\n    opacity: 0;\n}\n\n.letter {\n    overflow: hidden;\n    height: 195px;\n    width: 165px;\n}\n\n.letter,\n.divider {\n    opacity: 1;\n    transition-property: opacity;\n    transition-duration: 100ms;\n    transition-timing-function: linear;\n}\n\n#divider {\n    width: 40px;\n    height: 120px;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: space-between;\n}\n\n.circle {\n    width: 40px;\n    height: 40px;\n    border-radius: 20px;\n    background-color: currentColor;\n}\n",
+		":root {\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}"
+	],
+	"names": [],
+	"mappings": "ACAA,AAAA,KAAK,CAAC;EACF,sBAAsB,EAAE,WAAW;EACnC,uBAAuB,EAAE,SAAS,GACrC;;ADDD,AAAA,KAAK;AACL,IAAI,CAAC;EACD,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,QAAQ,EAAE,MAAM;EAChB,WAAW,EAAE,WAAW;EACxB,gBAAgB,EAAE,IAAI;EACtB,KAAK,EAAE,IAAI,GACd;;AAGD,AAAA,UAAU,CAAC;EACP,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,gBAAgB,EAAE,WAAW;EAC7B,QAAQ,EAAE,MAAM,GACnB;;AAED,AAAA,MAAM,CAAC;EACH,KAAK,EAAE,IAAI;EACX,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,KAAK;EAChB,WAAW,EAAE,IAAI;EACjB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAE,MAAM;EACnB,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,IAAI,GACf;;AAED,AAAA,MAAM,CAAC,KAAK,CAAC;EACT,OAAO,EAAE,CAAC,GACb;;AAED,AAAA,OAAO,CAAC;EACJ,QAAQ,EAAE,MAAM;EAChB,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK,GACf;;AAED,AAAA,OAAO;AACP,QAAQ,CAAC;EACL,OAAO,EAAE,CAAC;EACV,mBAAmB,EAAE,OAAO;EAC5B,mBAAmB,EAAE,KAAK;EAC1B,0BAA0B,EAAE,MAAM,GACrC;;AAED,AAAA,QAAQ,CAAC;EACL,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;EACb,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,aAAa,GACjC;;AAED,AAAA,OAAO,CAAC;EACJ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,IAAI;EACnB,gBAAgB,EAAE,YAAY,GACjC"
+}

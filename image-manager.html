@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image manager</title>
+    <link href="assets/css/image-manager.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+
+        <form id="new-image-form" action="">
+            <fieldset>
+                <legend>New image</legend>
+                <div class="field-line">  
+                    <label for="new-image-upload">Image upload</label>
+                    <input id="new-image-upload" required type="file">
+                <div>
+        
+                <div class="field-line">
+                    <label for="new-image-name">Name</label>
+                    <input type="text" required id="new-image-name">
+                </div>
+                <div class="field-line">
+                    <label for="new-image-tags">Tags</label>
+                    <textarea required id="new-image-tags"></textarea>
+                </div>
+                
+                <div class="field-line">
+                    <button type="submit">Add</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="assets/js/image-manager.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="obs-width" content="570">
+    <meta name="obs-height" content="420">
+    <meta name="obs-fps" content="60">
+    <meta name="obs-shutdown" content="true">
+    <meta name="obs-refresh" content="true">
+    
+    <meta name="obs-browser" content="width=570,height=420,fps=60,shutdown=true,refresh=true">
+    <title>Document</title>
+    <style>
+        :root,
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            background-color: transparent;
+        }
+        .letter-container {
+            width: 100%;
+            height: 47%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .letter-bar {
+            width: 82%;
+            height: 47%;
+            transform-origin: 50%;
+            transition-property: transform, background-color;
+            transition-timing-function: ease-in-out;
+            position: relative;
+        }
+
+
+        .logo-container {
+            /* ratio: 1.36:1 */
+            width: 570px;/*800px;*/
+            height: 420px;/*588px;*/
+            position: relative;
+        }
+
+        .letter-and {
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .letter-w {
+            bottom: 0;
+        }
+
+        .letter {
+            position: absolute;
+            right: 2%;
+            top: 0;
+            bottom: 0;
+            width: 20%;
+        }
+
+    </style>
+
+    
+</head>
+<body>
+
+    <div class="logo-container">
+        <div class="letter-container letter-f">
+            <div class="letter-bar">
+                <div class="letter">
+                    <svg width="100%" height="100%" viewBox="0 0 284 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                        <g transform="matrix(1,0,0,1,-10145,-9877)">
+                            <g transform="matrix(1.20633,0,0,0.890574,-2094.23,1080.02)">
+                                <rect id="Artboard4" x="10145.8" y="9877.88" width="234.844" height="318.109" style="fill:none;"/>
+                                <g id="Artboard41" serif:id="Artboard4">
+                                    <g transform="matrix(0.730673,2.76809e-32,0,0.989739,7071.66,9227.46)">
+                                        <path d="M4341.34,755.086L4341.34,797.422L4426.3,797.422L4426.3,835.438L4341.34,835.438L4341.34,918.67L4299.87,918.67L4299.87,717.07L4436.09,717.07L4436.09,755.086L4341.34,755.086Z" style="fill:white;fill-rule:nonzero;"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="letter-container letter-and">
+            <div class="letter-bar">
+                <div class="letter">
+                    <svg width="100%" height="100%" viewBox="0 0 284 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                        <g transform="matrix(1,0,0,1,-10145,-9877)">
+                            <g transform="matrix(1.20633,0,0,0.890574,-2094.23,1080.02)">
+                                <rect id="Artboard4" x="10145.8" y="9877.88" width="234.844" height="318.109" style="fill:none;"/>
+                                <g id="Artboard41" serif:id="Artboard4">
+                                    <g transform="matrix(0.730673,2.76809e-32,0,0.989739,6748.64,9331.35)">
+                                        <path d="M4720.07,757.682C4720.07,751.346 4720.88,745.586 4722.52,740.402C4724.15,735.218 4726.4,730.466 4729.28,726.146C4732.16,721.826 4735.48,717.842 4739.22,714.194C4742.96,710.546 4746.95,707.186 4751.17,704.114C4745.8,697.97 4741.28,691.298 4737.64,684.098C4733.99,676.898 4732.16,668.402 4732.16,658.61C4732.16,653.618 4733.22,648.242 4735.33,642.482C4737.44,636.722 4740.76,631.394 4745.27,626.498C4749.78,621.602 4755.59,617.522 4762.69,614.258C4769.8,610.994 4778.34,609.362 4788.32,609.362C4797.54,609.362 4805.51,610.754 4812.23,613.538C4818.95,616.322 4824.56,620.066 4829.08,624.77C4833.59,629.474 4836.95,634.898 4839.16,641.042C4841.36,647.186 4842.47,653.522 4842.47,660.05C4842.47,666.194 4841.41,671.714 4839.3,676.61C4837.19,681.506 4834.4,686.018 4830.95,690.146C4827.49,694.274 4823.56,698.066 4819.14,701.522C4814.72,704.978 4810.21,708.146 4805.6,711.026L4838.15,745.586C4840.07,742.898 4841.8,739.538 4843.33,735.506C4844.87,731.474 4845.64,726.77 4845.64,721.394L4845.64,698.642L4884.23,698.642L4884.23,721.394C4884.23,731.762 4882.31,741.41 4878.47,750.338C4874.63,759.266 4869.92,767.378 4864.36,774.674L4900.07,813.842L4853.12,813.842L4841.32,801.17C4834.79,805.97 4827.25,809.714 4818.71,812.402C4810.16,815.09 4800.61,816.434 4790.05,816.434C4779.68,816.434 4770.23,814.85 4761.68,811.682C4753.14,808.514 4745.75,804.242 4739.51,798.866C4733.27,793.49 4728.47,787.25 4725.11,780.146C4721.75,773.042 4720.07,765.554 4720.07,757.682ZM4790.05,781.586C4795.24,781.586 4799.94,780.914 4804.16,779.57C4808.39,778.226 4812.23,776.306 4815.68,773.81L4775.65,730.61C4770.85,734.258 4766.87,738.242 4763.7,742.562C4760.53,746.882 4758.95,751.922 4758.95,757.682C4758.95,760.946 4759.76,764.018 4761.4,766.898C4763.03,769.778 4765.28,772.322 4768.16,774.53C4771.04,776.738 4774.36,778.466 4778.1,779.714C4781.84,780.962 4785.83,781.586 4790.05,781.586ZM4771.04,658.61C4771.04,663.41 4772.2,667.922 4774.5,672.146C4776.8,676.37 4779.59,680.306 4782.85,683.954C4788.42,680.306 4793.32,676.61 4797.54,672.866C4801.76,669.122 4803.88,664.946 4803.88,660.338C4803.88,656.498 4802.63,652.85 4800.13,649.394C4797.64,645.938 4793.7,644.21 4788.32,644.21C4782.37,644.21 4778,645.842 4775.22,649.106C4772.44,652.37 4771.04,655.538 4771.04,658.61Z" style="fill:white;fill-rule:nonzero;"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="letter-container letter-w">
+            <div class="letter-bar">
+                <div class="letter">
+                    <svg width="100%" height="100%" viewBox="0 0 284 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                        <g transform="matrix(1,0,0,1,-10145,-9877)">
+                            <g transform="matrix(1.20633,0,0,0.890574,-2094.23,1080.02)">
+                                <rect id="Artboard4" x="10145.8" y="9877.88" width="234.844" height="318.109" style="fill:none;"/>
+                                <g id="Artboard41" serif:id="Artboard4">
+                                    <g transform="matrix(0.730673,2.76809e-32,0,0.989739,6455.96,9271.76)">
+                                        <path d="M5224.74,672.304L5271.69,796.432L5311.43,672.304L5354.63,672.304L5287.53,873.904L5258.73,873.904L5210.63,748.624L5162.53,873.904L5133.73,873.904L5066.63,672.304L5109.83,672.304L5150.15,796.432L5196.52,672.304L5224.74,672.304Z" style="fill:white;fill-rule:nonzero;"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            function getRandInt(min, max) {
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+
+            const duration = 2000;
+            const paths = document.querySelectorAll(`.letter-bar`);
+            const minTranslate = -10;
+            const maxTranslate = 10;
+            const minRotate = -10;
+            const maxRotate = 10;
+
+            let hue = getRandInt(0, 360);
+
+            function createSet() {
+
+                let newHue = getRandInt(0, 360);
+                while (newHue >= hue - 50 && newHue <= hue + 50) {
+                    newHue = getRandInt(0,360);
+                }
+                hue = newHue;
+                const saturationMax = hue >= 55 && hue <= 175 ? 80 : 100;
+                const saturationMin = 10;
+                const luminosityMax = 50;
+                const luminosityMin = 50;
+
+                let saturation = getRandInt(saturationMin, saturationMax);
+
+                paths.forEach((line, i) => {
+                    const rotate = getRandInt(minRotate, maxRotate);
+                    const translateX = getRandInt(minTranslate, maxTranslate);
+                    const translateY = getRandInt(minTranslate, maxTranslate);
+                    const luminosity = getRandInt(luminosityMin, luminosityMax);
+                    let newSaturation = getRandInt(saturationMin, saturationMax);
+                    while (newSaturation >= saturation - 5 && newSaturation <= saturation + 5) {
+                        newSaturation = getRandInt(saturationMin, saturationMax);
+                    }
+                    saturation = newSaturation;
+                    line.setAttribute(
+                        "style",
+                        `
+                        transition-duration: ${duration}ms;
+                        transform:
+                        rotate(${rotate}deg)
+                        translateX(${translateX}%)
+                        translateY(${translateY}%)
+                        ;
+                        background-color: 
+                            hsl(
+                            ${hue},
+                            ${saturation}%,
+                            ${luminosity}%
+                            )
+                        ;
+                        `
+                    );
+                
+                });
+                
+            }
+
+            createSet();
+            window.setInterval(() => {
+                createSet();
+            }, duration + 1000);
+            })();
+
+    </script>
+    
+</body>
+</html>

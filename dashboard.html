@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="assets/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+
+        <form id="new-research-text-form" action="">
+            <fieldset>
+                <legend>New research text</legend>
+
+                <div class="field-line">
+                    <label for="new-research-text-mode">Mode</label>
+                    <select id="new-research-text-mode">
+                        <option value="reading" selected>Reading</option>
+                        <option value="writing">Writing</option>
+                    </select>
+                </div>
+        
+                <div class="field-line">
+                    <label for="new-research-text-header1">Header 1</label>
+                    <textarea id="new-research-text-header1"></textarea>
+                </div>
+                <div class="field-line">
+                    <label for="new-research-text-header2">Header 2</label>
+                    <textarea id="new-research-text-header2"></textarea>
+                </div>
+                <div class="field-line">
+                    <label for="new-research-text-header3">Header 3</label>
+                    <textarea id="new-research-text-header3"></textarea>
+                </div>
+                <div class="field-line">
+                    <label for="new-research-text-header4">Header 4</label>
+                    <textarea id="new-research-text-header4"></textarea>
+                </div> 
+                <div class="field-line">
+                    <label for="new-research-text-header5">Header 5</label>
+                    <textarea id="new-research-text-header5"></textarea>
+                </div>
+                <div class="field-line">  
+                    <label for="new-research-text-image_upload">Image upload</label>
+                    <div class="input-group">
+                        <input id="new-research-text-image_upload" type="file">
+                        <button type="button" id="new-research-text-image_clear_button">clear</button>
+                    </div>
+                <div>
+                <div class="field-line">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+    
+            </fieldset>
+        </form>
+
+        <form id="new-video-text-form" action="">
+            <fieldset>
+                <legend>New video text</legend>
+        
+                <div class="field-line">
+                    <label for="new-video-text-header1">Header 1</label>
+                    <textarea id="new-video-text-header1"></textarea>
+                </div>
+                <div class="field-line">
+                    <label for="new-video-text-header2">Header 2</label>
+                    <textarea id="new-video-text-header2"></textarea>
+                </div>
+                <div class="field-line">
+                    <label for="new-video-text-header3">Header 3</label>
+                    <textarea id="new-video-text-header3"></textarea>
+                </div>
+                <div class="field-line">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+    
+            </fieldset>
+        </form>
+
+        <form id="pomodoro-form" action="">
+            <fieldset>
+                <legend>Pomodoro Timer</legend>
+        
+                <div class="field-line">
+                    <label for="pomodoro-mins">Minutes</label>
+                    <input type="number" id="pomodoro-mins" step="1" min="0" max="60">
+                </div>
+                <div class="field-line">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+    
+            </fieldset>
+        </form>
+
+
+    </div>
+    
+
+    <script type="module" src="assets/js/dashboard.js"></script>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        const reader = new FileReader();
+        const researchForm = document.getElementById('new-research-text-form');
+        const researchMode = document.getElementById('new-research-text-mode');
+        const researchH1 = document.getElementById('new-research-text-header1');
+        const researchH2 = document.getElementById('new-research-text-header2');
+        const researchH3 = document.getElementById('new-research-text-header3');
+        const researchH4 = document.getElementById('new-research-text-header4');
+        const researchH5 = document.getElementById('new-research-text-header5');
+        const researchImage_clear_button = document.getElementById('new-research-text-image_clear_button');
+        const researchImage_upload = document.getElementById('new-research-text-image_upload');
+        let researchImage_src;
+        let researchImage_filename;
+
+        const videoForm = document.getElementById('new-video-text-form');
+        const videoH1 = document.getElementById('new-video-text-header1');
+        const videoH2 = document.getElementById('new-video-text-header2');
+        const videoH3 = document.getElementById('new-video-text-header3');
+
+        const pomoForm = document.getElementById('pomodoro-form');
+        const pomoMins = document.getElementById('pomodoro-mins');
+
+
+        reader.onload = handleFileRead;
+
+        researchImage_upload.addEventListener('change', handleFileUpload, false);
+
+        researchImage_clear_button.addEventListener('click', (e) => {
+            e.preventDefault();
+            researchImage_upload.value = '';
+            researchImage_src = undefined;
+        })
+
+        function handleFileRead(event) {
+            researchImage_src = event.target.result;
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            researchImage_filename = file.name;
+
+            reader.readAsDataURL(file);
+        }
+
+        
+        researchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const researchText = {
+                'mode' : researchMode.value,
+                'h1' : researchH1.value,
+                'h2' : researchH2.value,
+                'h3' : researchH3.value,
+                'h4' : researchH4.value,
+                'h5' : researchH5.value,
+                'image_src' : researchImage_src
+            };
+
+            socket.emit('research text', researchText);            
+        });
+
+        videoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const videoText = {
+                'h1' : videoH1.value,
+                'h2' : videoH2.value,
+                'h3' : videoH3.value
+            };
+
+            socket.emit('video text', videoText);            
+        });
+
+        pomoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            socket.emit('pomodoro', pomoMins.value);   
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+:root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+:root,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Soin Sans Pro';
+  background-color: transparent;
+  font-size: 36px; }
+
+h1, h2, h3 {
+  margin: 0; }
+
+h1 {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  line-height: 1.2em; }
+
+h2 {
+  font-weight: 400;
+  font-size: 0.93rem;
+  line-height: 1.2em; }
+
+h3 {
+  font-weight: 400;
+  font-size: 0.64rem;
+  line-height: 1.2em;
+  opacity: 0.9; }
+
+#container {
+  width: 700px;
+  height: 140px; }
+
+#video_text {
+  color: #fff;
+  text-align: right; }
+
+/*# sourceMappingURL=video-text.css.map */

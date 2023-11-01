@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="obs-width" content="700">
+    <meta name="obs-height" content="275">
+    <meta name="obs-fps" content="60">
+    <meta name="obs-shutdown" content="true">
+    <meta name="obs-refresh" content="true">
+    
+    <meta name="obs-browser" content="width=700,height=275,fps=60,shutdown=true,refresh=true">
+    <title>Document</title>
+    <link href="assets/css/starting-soon.css" rel="stylesheet">
+</head>
+<body class="vignette">
+    <div id="container">
+        <div id="timer">
+            <div id="min-1" class="letter hide"></div>
+            <div id="min-2" class="letter hide"></div>
+            <div id="divider" class="divider hide"><div class="circle"></div><div class="circle"></div></div>
+            <div id="sec-1" class="letter hide"></div>
+            <div id="sec-2" class="letter hide"></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        const parsedUrl = new URL(window.location.href);
+
+        
+console.log(parsedUrl.searchParams.get("id"));
+
+        var timerEl = document.getElementById('timer');
+
+        var min1El = document.getElementById('min-1');
+        var min2El = document.getElementById('min-2');
+        var sec1El = document.getElementById('sec-1');
+        var sec2El = document.getElementById('sec-2');
+        var dividerEl = document.getElementById('divider');
+
+        let minutes = parsedUrl.searchParams.get("m") || 5;
+        let seconds = parsedUrl.searchParams.get("s") || 0;
+
+        parseTime(minutes, seconds);
+
+        function toggleEl(el, hide) {
+            if (hide) {
+                el.classList.add('hide');
+                return;
+            } 
+
+            el.classList.remove('hide');
+            return;
+        }
+
+        function parseTime(minutes, seconds) {
+
+            let stringMin = minutes.toString();
+            let min1;
+            let min2;
+            if (minutes < 1) {
+                // add class to min2
+                // add class to divider
+                toggleEl(min1El, true);
+                toggleEl(min2El, true);
+                toggleEl(dividerEl, true);
+                min1 = '1';
+                min2 = '1';
+            } else if (minutes < 10) {
+                // add class to min1
+                // remove class from min2
+                // remove class from divider
+                toggleEl(min1El, true);
+                toggleEl(min2El, false);
+                toggleEl(dividerEl, false);
+                min1 = '1';
+                min2 = stringMin;
+            } else {
+                // remove class from min1
+                // remove class from min2
+                // remove class from divider
+                toggleEl(min1El, false);
+                toggleEl(min2El, false);
+                toggleEl(dividerEl, false);
+                min1 = stringMin.substring(0,1);
+                min2 = stringMin.substring(1,2);
+            }
+
+            let stringSec = seconds.toString();
+            let sec1;
+            let sec2;
+            if (seconds < 1 && minutes < 1) {
+                // add class to sec2
+                toggleEl(sec1El, true);
+                toggleEl(sec2El, false);
+                sec1 = '1';
+                sec2 = '0';
+            } else if (seconds < 10 && minutes < 1) {
+                // add class to sec1
+                // remove class from sec2
+                toggleEl(sec1El, true);
+                toggleEl(sec2El, false);
+                sec1 = '1';
+                sec2 = stringSec;
+            } else if (seconds < 10 && minutes >= 1) {
+                // remove class to sec1
+                // remove class from sec2
+                toggleEl(sec1El, false);
+                toggleEl(sec2El, false);
+                sec1 = '0';
+                sec2 = stringSec;
+            } else {
+                // remove class from sec1
+                // remove class from sec2
+                toggleEl(sec1El, false);
+                toggleEl(sec2El, false);
+                sec1 = stringSec.substring(0,1);
+                sec2 = stringSec.substring(1,2);
+            }
+
+            // if (minutes > 0) {
+            //     toggleEl(dividerEl, seconds % 2 == 0)
+            // }
+
+            // console.log(`${min1}${min2}${minutes < 1 ? 'D' : ':'}${sec1}${sec2}`);
+
+            if (min1El.textContent != min1) {
+                min1El.textContent = min1;
+            }
+
+            if (min2El.textContent != min2) {
+                min2El.textContent = min2;
+            }
+
+            if (sec1El.textContent != sec1) {
+                sec1El.textContent = sec1;
+            }
+
+            if (sec2El.textContent != sec2) {
+                sec2El.textContent = sec2;
+            }
+
+            // console.log(stringMin);
+            // let min1 = stringMin.length > 1 ? stringMin.substring(0,1) : (stringMin == '0' ? '' : '1');
+
+            // console.log(min1);
+
+            //return `${minutes < 10 ? '\u00A0' : ''}${minutes < 1 ? '\u00A0' : minutes}${minutes < 1 ? '\u00A0' : ':'}${seconds < 10 ? (minutes < 1 ? '\u00A0' : '0') : ''}${seconds}`;
+        };
+
+        const countDown = window.setInterval(() => {
+
+           
+            parseTime(minutes, seconds);
+
+            seconds = seconds - 1;
+            if (seconds < 0) {
+                seconds = 59;
+            }
+
+            if (seconds == 59) {
+                minutes = minutes - 1;
+            }
+
+            if (minutes < 0) {
+                clearInterval(countDown);
+            }
+
+            
+        }, 1000);
+
+
+        // socket.on('research text', function(researchText) {
+        //     researchTextContainer.innerHTML = '';
+        //     researchImageContainer.innerHTML = '';
+        //     if (researchText.hasOwnProperty('h1') && researchText['h1']) {
+        //         var header1 = document.createElement('h1');
+        //         header1.textContent = researchText.h1;
+        //         researchTextContainer.appendChild(header1);
+        //     }
+        //     if (researchText.hasOwnProperty('h2') && researchText['h2']) {
+        //         var header2 = document.createElement('h2');
+        //         header2.textContent = researchText.h2;
+        //         researchTextContainer.appendChild(header2);
+        //     }
+        //     if (researchText.hasOwnProperty('h3') && researchText['h3']) {
+        //         var header3 = document.createElement('h3');
+        //         header3.textContent = researchText.h3;
+        //         researchTextContainer.appendChild(header3);
+        //     }
+        //     if (researchText.hasOwnProperty('h4') && researchText['h4']) {
+        //         var header4 = document.createElement('h4');
+        //         header4.textContent = researchText.h4;
+        //         researchTextContainer.appendChild(header4);
+        //     }
+        //     if (researchText.hasOwnProperty('h5') && researchText['h5']) {
+        //         var header5 = document.createElement('h5');
+        //         header5.textContent = researchText.h5;
+        //         researchTextContainer.appendChild(header5);
+        //     }
+        //     if (researchText.hasOwnProperty('image_src') && researchText['image_src']) {
+        //         var image = document.createElement('img');
+        //         image.src = researchText.image_src;
+        //         researchImageContainer.appendChild(image);
+        //     }
+        // });
+    </script>
+</body>
+</html>

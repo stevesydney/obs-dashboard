@@ -1,0 +1,13 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    background-color: var(--main-bg-colour);
+    color: var(--main-fg-colour);
+    font-family: var(--main-font);
+    font-size: var(--main-font-size);
+
+}
