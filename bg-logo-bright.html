@@ -209,11 +209,16 @@
                 let logoLeft;
                 let logoRight;
                 let logoBottom;
+                let hideLogo = false;
 
                 for (const [key, value] of params) {
 
                     if (key === 'mode') {
                         mode = value;
+                    }
+
+                    if (key === 'hideLogo') {
+                        hideLogo = value === 'true';
                     }
                     
                     if (key === 'logoWidth') {
@@ -245,18 +250,21 @@
                     }
                 }
 
-                logo[0].setAttribute(
-                    "style",
-                    `
-                        ${logoDimensions || ''}
-                        ${logoLeft || ''}
-                        ${logoRight || ''}
-                        ${logoBottom || ''}
-                    `
-                );
-
-                
-
+                if (hideLogo) {
+                    logo[0].setAttribute(
+                        "style","display: none;"
+                    ); 
+                } else {
+                    logo[0].setAttribute(
+                        "style",
+                        `
+                            ${logoDimensions || ''}
+                            ${logoLeft || ''}
+                            ${logoRight || ''}
+                            ${logoBottom || ''}
+                        `
+                    );
+                }
             }
 
             function createSet() {
